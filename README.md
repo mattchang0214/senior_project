@@ -1,7 +1,5 @@
 # Introduction
-Terrafugia is known for the TF1: a two-seater personal roadable aircraft. Terrafugia’s R&D division is looking ahead to the future and re-imaging traveling for long distance commuters to dense city centers. The TF2 is a two-part transportation system consisting of an autonomous ground vehicle and a 6-person air taxi. The autonomous ground vehicle (AGV) picks individuals up at their home (A) and drives them to a nearby vertiport. The AGV then automatically docks and loads the passenger cabin to the TF2, reducing downtime on the vertiport as well as increasing safety and reliability. Once the passengers reach their destination another AGV will dock (B) and unload the passengers bringing them to their final destination.
-<br>
-There are scenarios where GPS will be unavailable at vertiports. Under these circumstances, the rover will require a redundant system to dock and undock with the TF-2. Our project this semester was to design a computer vision autonomous docking rover that can work in GPS denied areas. It uses computer vision to navigate a 1/10th scale rover to a dock signified by ArUco markers.
+Our project this semester was to design a computer vision autonomous docking rover that can work in GPS denied areas. It uses computer vision to navigate a 1/10th scale rover to a dock signified by ArUco markers.
 
 # Hardware Architecture
 Our team used four main hardware component to complete our goal.

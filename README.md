@@ -1,0 +1,21 @@
+# Introduction
+Terrafugia is known for the TF1: a two-seater personal roadable aircraft. Terrafugia’s R&D division is looking ahead to the future and re-imaging traveling for long distance commuters to dense city centers. The TF2 is a two-part transportation system consisting of an autonomous ground vehicle and a 6-person air taxi. The autonomous ground vehicle (AGV) picks individuals up at their home (A) and drives them to a nearby vertiport. The AGV then automatically docks and loads the passenger cabin to the TF2, reducing downtime on the vertiport as well as increasing safety and reliability. Once the passengers reach their destination another AGV will dock (B) and unload the passengers bringing them to their final destination.
+<br>
+There are scenarios where GPS will be unavailable at vertiports. Under these circumstances, the rover will require a redundant system to dock and undock with the TF-2. Our project this semester was to design a computer vision autonomous docking rover that can work in GPS denied areas. It uses computer vision to navigate a 1/10th scale rover to a dock signified by ArUco markers.
+
+# Hardware Architecture
+Our team used four main hardware component to complete our goal.
+* Intel Sense D400 Stereo Camera
+* Nvidia Jetson TX1
+* Pixhawk 2.1 Cube
+* Modified 1/10th scale Traxxas Rover
+
+# Software Architecture
+The software architecture for our project required us to integrate a variety of different open source modules. It was important that we 
+had a solid understanding of each module to avoid compatibility issues. 
+
+* ArUco Markers: An ArUco marker is a square marker made up of a wide black border and an inner binary matrix which determines its ID. The black border facilitates its fast detection in the image. The markers were used to identify the sides of the dock to allow the rover to align itself to the center of the dock. An additional marker at the back of the dock signals the rover to stop upon reaching a certain distance to the marker.
+* OpenCV: OpenCV is an open source computer vision and machine learning software library. It is highly optimized with focus on real-time applications. It has C++, Python and Java interfaces and support Windows, Linux, etc. OpenCV functions were used in the real-time detection and identification of ArUco markers. Functions were also used to visualize the camera feed with bounding boxes indicating the position of the markers.
+* ROS: Robot Operating System (ROS) is a collection of tools, libraries, and conventions that simplifies the task of creating robust robot behavior across various robotic platforms. ROS offers a message passing interface (middleware) that provides inter-process communication. ROS functions allowed our program to send velocity commands to the Pixhawk while receiving camera feed from RealSense processes. The tools were also used to log errors and warnings for analysis.
+* QGroundControl: QGroundControl is an open source Ground Control Station that provides full flight control and mission planning for any vehicle that communicates using the MAVLink protocol. QGroundControl allowed us to adjust the parameters of the Extended Kalman Filter on the Pixhawk, which helped smoothen the movement of the rover. We were also able to enable input data signal from the wheel encoders to the filter on QGroundControl.
+* ArduRover: ArduRover [5] is an open source autopilot software for guiding ground vehicles. It can receive both manually inputted commands from a remote or it can run fully autonomous using mission planning software. The navigation software runs on the Pixhawk and combines sensory data from various sources (compass, GPS, accelerometers, etc) to navigate the vehicle autonomously.
